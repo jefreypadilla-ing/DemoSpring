@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1" />
+<title>Spring Security Demo</title>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"
+              href="../css/bootstrap.min.css" />
+
+<!-- SigIn CSS -->              
+<link rel="stylesheet" th:href="@{/css/signin.css}"
+              href="../css/signin.css" />
+
+</head>
+<body>
+	<div class="container">
+
+		<form th:action="@{/login}" method="post" class="form-signin">
+			
+			<h2 class="form-signin-heading">Please sign in</h2>
+			
+			<div th:if="${param.error}">
+            	<div class="alert alert-danger">
+                	Invalid username and password.
+                </div>
+            </div>
+            
+			<div th:if="${param.logout}">
+				<div class="alert alert-info">
+					You have been logged out.
+				</div>
+            </div>
+            
+			<label for="username" class="sr-only">Username</label> 
+			<input type="text" name="username" id="username" class="form-control" placeholder="Username" required="true" autofocus="1" /> 
+				
+			<label for="password" class="sr-only">Password</label> 
+			<input type="password" name="password" id="password" class="form-control" placeholder="Password" required="true" />
+			
+			<input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign In"/>
+				
+		</form>
+
+	</div>
+</body>
+</html>
